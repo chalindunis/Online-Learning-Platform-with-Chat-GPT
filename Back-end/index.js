@@ -9,8 +9,9 @@ dotenv.config();
 
 const app = express();
 //Middleware
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
+
 
 // openai.apiKey = process.env.OPENAI_API_KEY;
 
@@ -63,6 +64,11 @@ async function run() {
 
     //verify admin
     //verify instructor
+    
+    //Admin stats
+    //Get all instructors
+
+    //--------USERS ROUTE-------------
 
     //Get all users
     //Get user by Id
@@ -75,19 +81,18 @@ async function run() {
     //Add new classes
     app.post('/new-class',  async (req, res) => {
       const newClass = req.body;
-      newClass.availableSeats = parseInt(newClass.availableSeats)
+      // newClass.availableSeats = parseInt(newClass.availableSeats)
       const result = await classesCollection.insertOne(newClass);
       res.send(result);
   });
 
-    //Get approved classes from the database
+    //Get all approved classes 
     app.get('/classes', async (req, res) => {
       const query = { status: 'approved' };
       const result = await classesCollection.find(query).toArray();
       res.send(result);
   })
-
-
+  
     //Get all classes added  by instructor (instructor email)
     app.get('/classes/:email', async (req, res) => {
       const email = req.params.email;
@@ -96,13 +101,13 @@ async function run() {
       res.send(result);
   })
 
-    //Manage classes
+    //Manage classes (all classes visible)
     app.get('/classes-manage', async (req, res) => {
       const result = await classesCollection.find().toArray();
       res.send(result);
   })
 
-    //Update class status and reason
+    //Update class status and reason (change status and reason)
     app.patch('/change-status/:id', async (req, res) => {
       const id = req.params.id;
       const status = req.body.status;
@@ -119,17 +124,13 @@ async function run() {
       res.send(result);
   })
 
-
-    //Get all classes
-    //Change status of a class
-    //Get approved classes
+    //Get approved classes in seperate route
     app.get('/approved-classes', async (req, res) => {
       const query = { status: 'approved' };
       const result = await classesCollection.find(query).toArray();
       res.send(result);
   })
 
-    //Get all instructors
     //Update a class details
     app.put('/update-class/:id', async (req, res) => {
       const id = req.params.params.id;
@@ -150,30 +151,32 @@ async function run() {
   })
 
     //get single class by id for details page
-    app.get('class/:id', async(req, res) => {
+    app.get('/class/:id', async(req, res) => {
       const id = req.params.id;
       const query = {_id:new ObjectId(id)};
       const result = await classesCollection.findOne(query);
       res.send(result);
   })
 
-    //add to cart
+
+
+    //------------CART ROUTES------------
     //get cart item id for checking if a class is already in cart
     //delete an item from cart
-    //Payment routes
+
+    //----------PAYMENT ROUTES-----------
     //post payment info
 
-    //Enrollled routes
-    //Admin stats
-    //Get all instructors
-    //Applied routes
+    //-----------ENROLLED ROUTES----------
+
+    //----------APPLIED ROUTES------------
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
     // Ensures that the client will close when you finish/error
-    await client.close();
+    // await client.close();
   }
 }
 run().catch(console.dir);
