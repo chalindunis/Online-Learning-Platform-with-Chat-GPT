@@ -391,7 +391,7 @@ async function run() {
     })
 
     //Based on popular instructors
-    app.get("/popular_instructros", async(req, res) => {
+    app.get("/popular_instructors", async(req, res) => {
       const pipeline = [
         {
             $group: {
@@ -405,6 +405,11 @@ async function run() {
                 localField: "_id",
                 foreignField: "email",
                 as: "instructor"
+            }
+        },
+        {
+            $match: {
+              "instructor.role": "instructor",
             }
         },
         {
