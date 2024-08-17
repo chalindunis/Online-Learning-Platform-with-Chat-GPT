@@ -4,7 +4,7 @@ import axios from "axios";
 // const useAxiosFetch = () => {
 const useAxiosFetch = () => {
     const axiosInstance = axios.create({
-        baseURL: 'http://localhost:5000/',
+        baseURL: 'http://localhost:5000',
     });
     
     //interceptors

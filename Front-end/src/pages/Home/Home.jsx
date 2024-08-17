@@ -5,6 +5,7 @@ import PopularClasses from "./PopularClasses/PopularClasses"
 import PopularTeacher from "./PopularTeacher/PopularTeacher"
 
 const Home =() => {
+    // const {user} = useAuth();
     return (
         <section>
             <HeroContainer/>
