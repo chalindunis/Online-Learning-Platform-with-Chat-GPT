@@ -40,16 +40,16 @@ const Classes = () => {
        axiosSecure.get(`/cart-item/${id}?email=${currentUser.email}`)
        .then(res => {
         if(res.data.classId === id) {
-            return toast.error("Already selected")
+            return alert("Already selected")
         } else if (enrolledClasses.find(item => item.classes._id === id)) {
-            return toast.error("Already enrolled")
+            return alert("Already enrolled")
         } else {
             const data = {
                 classId: id,
                 userMail: currentUser.email,
                 data: new Date()
             }
-            toast.promise(axiosSecure.post('/add-to-cart', data)).then(res => {
+            axiosSecure.post('/add-to-cart', data).then(res => {
                 console.log(res.data)
             }), {
                 pending: "Selecting...",

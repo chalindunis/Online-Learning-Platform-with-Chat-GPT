@@ -18,6 +18,7 @@ const Login = () => {
         const formData = Object.formEntries(data)
 
         login(formData.email, formData.password).then(() => {
+            alert("Login successful!")
             navigate(location.state?.from || '/dashboard')
         }).catch((err) => {
             setError(err.code);
