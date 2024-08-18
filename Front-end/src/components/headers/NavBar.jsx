@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useContext } from "react"
 import { NavLink, useLocation, useNavigate } from "react-router-dom"
 import { ThemeProvider, THEME_ID, createTheme } from '@mui/material/styles';
 import { Switch } from "@mui/material";
+import Swal from 'sweetalert2';
 import { FaBars } from "react-icons/fa";
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
+// import { AuthContext } from '../../utilities/providers/AuthProvider';
+// import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 
 import photoURL from "../../assets/home/girl.jpg";
 
@@ -36,7 +39,7 @@ const NavBar = () => {
     const [isFixed, setIsFixed] = useState(false);
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [navBg, setNavBg] = useState('bg-[#15151580]');
-    // const [user, setUser] = useState(false);
+    // const [user, logout] = useContext(AuthContext);
     const user = true;
 
     const toggleMobileMenu = () => {
@@ -80,8 +83,35 @@ const NavBar = () => {
         }
     }, [scrollPosition])
 
-    const handleLogout = () => {
-        console.log("Logged out")
+    const handleLogout = e => {
+        e.preventDefault();
+        Swal.fire({
+            title: 'Are you sure to logout ?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Logout.!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                logout()
+                    .then(() => {
+                        Swal.fire(
+                            'Logged out!',
+                            'You are logged out successful.',
+                            'success'
+                        )
+                    })
+                    .catch(err => {
+                        Swal.fire(
+                            'Error!',
+                            err.message,
+                            'error'
+                        )
+                    })
+            }
+        })
     }
 
     return (
@@ -172,6 +202,58 @@ const NavBar = () => {
                         </div>
                     </div>
                 </div>
+
+                {/* Mobile Menu */}
+                <AnimatePresence>
+                    {isMobileMenuOpen && (
+                        <motion.div
+                            className="md:hidden mt-2 w-full bg-black"
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            {navLinks.map((link) => (
+                                <li key={link.route}>
+                                    <NavLink
+                                        className={({ isActive }) => `font-bold ${isActive ? 'text-secondary' : `${navBg.includes('bg-transparent') ? 'text-white' : 'text-black dark:text-white'}`} hover:text-secondary duration-300`}
+                                        to={link.route}
+                                        style={{ whiteSpace: 'nowrap' }}
+                                    >
+                                        {link.name}
+                                    </NavLink>
+
+
+                                </li>
+                            ))}
+                            {
+                                user ? null : isLogin ? <li>
+                                    <NavLink
+                                        to='/register'
+                                        className={({ isActive }) => `font-bold ${isActive ? 'text-secondary' : `${navBg.includes('bg-transparent') ? 'text-white' : 'text-black dark:text-white'}`} hover:text-secondary duration-300`}
+                                    >Register</NavLink></li> : <li>
+                                    <NavLink
+                                        to='/login'
+                                        className={({ isActive }) => `font-bold ${isActive ? 'text-secondary' : `${navBg.includes('bg-transparent') ? 'text-white' : 'text-black dark:text-white'}`} hover:text-secondary duration-300`}
+                                    >Login</NavLink></li>
+                            }
+                            {
+                                user && <li><NavLink to='/dashboard' className={({ isActive }) => `font-bold ${isActive ? 'text-secondary' : `${navBg.includes('bg-transparent') ? 'text-white' : 'text-black dark:text-white'}`} hover:text-secondary duration-300`}>Dashboard</NavLink></li>
+                            }
+                            {
+                                user && <li>
+                                    <img src={user?.photoURL} className='h-[40px] rounded-full w-[40px]' alt="" />
+                                </li>
+                            }
+                            {
+                                user && <li><NavLink className='font-bold px-3 py-2 bg-secondary text-white rounded-xl' onClick={handleLogout}>Logout</NavLink></li>
+                            }
+
+                            {/* Add more mobile menu links as needed */}
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
             </div>
         </motion.nav>
     )
