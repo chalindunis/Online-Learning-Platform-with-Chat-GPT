@@ -6,9 +6,12 @@ import GoogleLogin from '../../components/headers/Social/GoogleLogin';
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { AuthContext } from '../../utilities/providers/AuthProvider';
 import axios from 'axios';
+import { useTitle } from '../../hooks/useTitle';
+import { toast } from 'react-toastify';
 
 
 const Register = () => {
+  useTitle('Register | Yoga Master - Unleashed Your Inner Self');
   const navigate = useNavigate();
   const {signUp, updateUser, setError} = useContext(AuthContext)
   const {register, handleSubmit, watch, formState: { errors} } = useForm();
@@ -38,20 +41,28 @@ const Register = () => {
               throw new Error(err);
             })
            }
+        });
+      }
         }).catch((err) => {
           setError(err.code);
           throw new Error(err)
-        })
-      }
-    });
-  }
+        }),
+        {
+          pending: 'Please wait...',
+          success: 'Registration successful!',
+          error: 'Registration failed!',
+        }
+      };
+  
+  
   const password = watch('password','')
 
   return (
     <div className='flex justify-center items-center pt-14 bg-gray-100'>
       <div className='bg-white p-8 rounded-lg shadow-md'>
         <h2 className='text-3xl font-bold text-center mb-6'>Please Register</h2> 
-        
+        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+
         {/* form data*/}
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className='flex items-center gap-5'>
@@ -167,7 +178,7 @@ const Register = () => {
         <GoogleLogin/>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Register

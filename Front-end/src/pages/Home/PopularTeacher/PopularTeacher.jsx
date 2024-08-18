@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import useAxiosFetch from '../../../hooks/useAxiosFetch'
+import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 import img from "../../../assets/home/girl.jpg"
 
@@ -12,7 +13,7 @@ const PopularTeacher = () => {
         }).catch((err) => {console.log(err)})
     }, []);
 
-    console.log(instructors)
+    // console.log(instructors)
   return (
     <div className='md:w-[80%] mx-auto my-36'>
         <div>
@@ -37,6 +38,18 @@ const PopularTeacher = () => {
                                 <p className='font-medium text-lg dark:text-white text-gray-600'>{instructor?.instructor?.name}</p>
                                 <p className='text-gray-500 whitespace-nowrap'>Instructor</p>
                                 <p className='text-ray-500 mb-4 whitespace-nowrap'>Total Students: {instructor?.totalEnrolled}</p>
+                            </div>
+
+                            <div className="flex flex-row items-center justify-center gap-4 text-gray-800 my-auto text-2xl mx-auto md:mx-0">
+                                <a className="hover:cursor-pointer text-secondary duration-300">
+                                    <FaLinkedin />
+                                </a>
+                                <a className="hover:cursor-pointer text-secondary duration-300">
+                                    <FaFacebook />
+                                </a>
+                                <a className="hover:cursor-pointer text-secondary duration-300">
+                                    <FaInstagram />
+                                </a>
                             </div>
                         </div>
                     </div>
