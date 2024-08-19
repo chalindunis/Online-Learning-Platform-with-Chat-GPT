@@ -100,7 +100,7 @@ const DashboardLayout = () => {
             >
                 <div className="flex gap-x-4 items-center">
                     <img
-                        src='/yoga-logo.png'
+                        src='/logo.png'
                         onClick={() => setOpen(!open)}
                         className={`cursor-pointer h-[40px] duration-500 ${open && "rotate-[360deg]"
                             }`}
@@ -110,7 +110,7 @@ const DashboardLayout = () => {
                             }`}
                         onClick={() => setOpen(!open)}
                     >
-                        Yoga Master
+                        Online Learning
                     </h1>
                 </div>
                 {/* Nav links  */}

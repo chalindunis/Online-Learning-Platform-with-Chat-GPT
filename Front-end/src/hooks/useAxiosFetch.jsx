@@ -10,17 +10,17 @@ const useAxiosFetch = () => {
     //interceptors
     useEffect(() => {
         //request interceptors
-        const requestInterceptor = axios.interceptors.request.use( (config)=> {
+        const requestInterceptor = axiosInstance.interceptors.request.use( (config)=> {
             return config;
-        }, function (error) {
-            return Promise.reject(error);
+        // }, function (error) {
+        //     return Promise.reject(error);
         });
 
         //response Interceptor
-        const responseInterceptor = axios.interceptors.response.use((response)=> {
-            return response;
-        }, function (error) {
-            return Promise.reject(error);
+        const responseInterceptor = axiosInstance.interceptors.response.use(
+            (response)=> response,
+      (error) => {
+        throw error;
         });
 
         return () => {

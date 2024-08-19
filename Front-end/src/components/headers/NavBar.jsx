@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useContext } from "react"
 import { NavLink, useLocation, useNavigate } from "react-router-dom"
 import { ThemeProvider, THEME_ID, createTheme } from '@mui/material/styles';
-import { Switch } from "@mui/material";
+import Switch from "@mui/material/Switch";
+import { FcElectricalSensor } from 'react-icons/fc';
 import Swal from 'sweetalert2';
 import { FaBars } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion"
-// import { AuthContext } from '../../utilities/providers/AuthProvider';
+import { AuthContext } from '../../utilities/providers/AuthProvider';
 // import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 
 import photoURL from "../../assets/home/girl.jpg";
@@ -39,11 +40,11 @@ const NavBar = () => {
     const [isFixed, setIsFixed] = useState(false);
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [navBg, setNavBg] = useState('bg-[#15151580]');
-    // const [user, logout] = useContext(AuthContext);
-    const user = true;
+    const {user, logout} = useContext(AuthContext);
+    // const user = true;
 
     const toggleMobileMenu = () => {
-        setIsMobileMenuOpen(!isMobileMenuOpen)
+        setIsMobileMenuOpen(!isMobileMenuOpen);
     };
 
     useEffect(() => {
@@ -124,7 +125,7 @@ const NavBar = () => {
                 <div className='px-4 py-4 flex items-center justify-between'>
                     {/*logo*/}
                     <div onClick={() => navigate('/')} className="flex-shrink-0 cursor-pointer pl-7 md:p-0 flex items-center">
-                    <div><h1 className='test-2x1 inline-flex gap-3 items-center font-bold text-white'>OnlineLearning<img src='/yoga-logo.png' alt='' className='w-8 h-8' /></h1>
+                    <div><h1 className='test-2x1 inline-flex gap-3 items-center font-bold text-white'>OnlineLearning<img src='/logo.png' alt='' className='w-8 h-8' /></h1>
                         <p className='font-bold text-[13px] tracking-[8px] text-white'>Quick Explore</p></div>
                     </div>
 
@@ -259,4 +260,4 @@ const NavBar = () => {
     )
 }
 
-export default NavBar
+export default NavBar;

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import bgImg from '../../../assets/home/banner-1.jpg'
+import bgImg from '../../../assets/home/cover1.jpeg'
 
 const Hero1 = () => {
   return (

@@ -33,7 +33,7 @@ const Footer = () => {
 
                 <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-32">
                     <div className="mx-auto max-w-sm lg:max-w-none">
-                        <p className="mt-4 text-center text-gray-500 lg:text-left lg:text-lg">Our experienced instructors will guide you through structured lessons, helping you develop a solid foundation while nurturing your creativity and musical expression.</p>
+                        <p className="mt-4 text-center text-gray-500 lg:text-left lg:text-lg">Our experienced instructors will guide you through structured lessons, helping you develop a solid foundation while nurturing your creativity and experience.</p>
 
                         <div className="mt-6 flex justify-center gap-4 lg:justify-start">
                             <a
@@ -157,13 +157,13 @@ const Footer = () => {
                                 className="mt-6 flex flex-col space-y-1"
                             >
                                 <a className="text-secondary dark:text-white dark:hover:text-secondary transition hover:text-secondary dark:/75" href="/">
-                                Rock and Yoga
+                                Rock and Learn
                                 </a>
                                 <a className="text-secondary dark:text-white dark:hover:text-secondary transition hover:text-secondary dark:/75" href="/">
-                                    Healthy Diet
+                                    Healthy Resources
                                 </a>
                                 <a className="text-secondary dark:text-white dark:hover:text-secondary transition hover:text-secondary dark:/75" href="/">
-                                Fit to health
+                                Fit to Knowledge
                                 </a>
                                 <a className="text-secondary dark:text-white dark:hover:text-secondary transition hover:text-secondary dark:/75" href="/">
                                     Exercise
@@ -223,7 +223,7 @@ const Footer = () => {
                         <br />
 
                         Created with &nbsp;
-                        <a className="text-secondary dark: underline transition hover:text-secondary dark:/75">Yoga Master</a>
+                        <a className="text-secondary dark: underline transition hover:text-secondary dark:/75">Online Learning</a>
                     </p>
                 </div>
             </div>

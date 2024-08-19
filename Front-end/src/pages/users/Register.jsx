@@ -11,13 +11,14 @@ import { toast } from 'react-toastify';
 
 
 const Register = () => {
-  useTitle('Register | Yoga Master - Unleashed Your Inner Self');
+  useTitle('Register |  Online Learning - Unleashed Your Knowledge');
   const navigate = useNavigate();
   const {signUp, updateUser, setError} = useContext(AuthContext)
   const {register, handleSubmit, watch, formState: { errors} } = useForm();
 
   const onSubmit = data => {
     setError('');
+    toast.promise(
     signUp(data.email, data.password). then((result) => {
       const user = result.user;
       if(user){
@@ -52,8 +53,8 @@ const Register = () => {
           success: 'Registration successful!',
           error: 'Registration failed!',
         }
-      };
-  
+    );
+};
   
   const password = watch('password','')
 

@@ -104,9 +104,9 @@ VITE_STRIPE=pk_test_51OpBUKCmx8hfkpYcu8oQ4qCneGyIcsId88zNDx3FTxDKU1QLJ7MWkSKiHtp
 npm run dev
 ```
 
-3. Create a git repository and push your code on github.com
+4. Create a git repository and push your code on github.com
 
-4. Use Render or Vercel to deploy your application. 
+5. Use Render or Vercel to deploy your application. 
     - render.com
         - Create an account
         - Create a new web service
@@ -120,7 +120,11 @@ npm run dev
         - Upload the environment variables
         - Deployment
 
-5. Replace the render URL with your local base URL in Front-end scripts.
+6. Replace the render URL with your local base URL in Front-end scripts.
 
 
+References and inspired by: 
+
+(https://github.com/mdalmamunit427/yoga-master-server)
+(https://github.com/mdalmamunit427/yoga-master-client-starter-file)
 

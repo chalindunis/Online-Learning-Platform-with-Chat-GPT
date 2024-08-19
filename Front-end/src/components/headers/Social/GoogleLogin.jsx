@@ -1,4 +1,5 @@
-import { FcGoogle } from "react-icons/fc";
+import React from 'react';
+import { FcGoogle } from "react-icons/fc";//-
 import useAuth from "../../../hooks/useAuth";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -67,4 +68,4 @@ const GoogleLogin = () => {
   )
 }
 
-export default GoogleLogin
+export default GoogleLogin;

@@ -8,7 +8,7 @@ import { FadeLoader } from 'react-spinners';
 
 
 const Login = () => {
-    useTitle('Login | Yoga Master - Unleashed Your Inner Self');
+    useTitle('Login | Online Learning - Unleashed Your Knowledge');
 
     const [showPassword, setshowPassword] = useState(false)
     const location = useLocation();

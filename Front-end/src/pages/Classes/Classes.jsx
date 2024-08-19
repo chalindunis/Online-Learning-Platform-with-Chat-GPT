@@ -49,7 +49,7 @@ const Classes = () => {
                 userMail: currentUser.email,
                 data: new Date()
             }
-            axiosSecure.post('/add-to-cart', data).then(res => {
+            toast.promise(axiosSecure.post('/add-to-cart', data).then(res => {
                 console.log(res.data)
             }), {
                 pending: "Selecting...",
@@ -63,7 +63,7 @@ const Classes = () => {
                         return `Error: ${data.message}`
                     }
                 }
-            }
+            });
         }
         
        })

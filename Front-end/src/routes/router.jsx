@@ -71,7 +71,7 @@ export const router = createBrowserRouter([
             index: true,
             element: <PrivetRoute><Dashboard /></PrivetRoute>
         },
-        // * ADMIN ROUTES
+        // -----------ADMIN ROUTES--------------
         {
             path: 'manage-users',
             element: <AdminRoute><ManageUsers /></AdminRoute>
@@ -89,7 +89,7 @@ export const router = createBrowserRouter([
             path: 'manage-class',
             element: <AdminRoute><ManageClasses /></AdminRoute>
         },
-        // * INSTRUCTOR ROUTES
+        //-------------INSTRUCTOR ROUTES-------------
         {
             path: 'instructor-cp',
             element: <InstructorRoute><InstructorCP /></InstructorRoute>
@@ -107,7 +107,7 @@ export const router = createBrowserRouter([
             element: <InstructorRoute><UpdateClass /></InstructorRoute>,
             loader: ({ params }) => fetch(`http://localhost:5000/class/${params.id}`),
         },
-        // * STUDENT ROUTES
+        //---------------STUDENT ROUTES------------
         {
             path: 'student-cp',
             element: <StudentRoute><StudentCP /></StudentRoute>

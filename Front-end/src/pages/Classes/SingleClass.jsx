@@ -9,7 +9,7 @@ import { useState } from "react";
 import useAxiosFetch from "../../hooks/useAxiosFetch";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
-import bannerImg1 from "../../assets/home/banner-1.jpg";
+import bannerImg1 from "../../assets/home/cover1.jpeg";
 import girImage from "../../assets/home/girl.jpg"
 
 

@@ -9,7 +9,7 @@ const useAxiosSecure = () => {
     const navigate = useNavigate();
 
     const axiosSecure = axios.create({
-        baseURL: 'http://localhost:5000'
+        baseURL: 'http://localhost:5000',
     });
     useEffect(() => {
         const requestInterceptor = axiosSecure.interceptors.request.use((config) => {
@@ -34,9 +34,9 @@ const useAxiosSecure = () => {
             axiosSecure.interceptors.request.eject(requestInterceptor);
             axiosSecure.interceptors.response.eject(responseInterceptor);
         }
-    }, [logout, navigate, axiosSecure])
+    }, [logout, navigate, axiosSecure]);
     
     return axiosSecure;
 }
 
-export default useAxiosSecure
+export default useAxiosSecure;

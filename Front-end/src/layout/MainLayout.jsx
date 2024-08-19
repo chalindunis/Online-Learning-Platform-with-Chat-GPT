@@ -28,7 +28,7 @@ const MainLayout =() => {
             <Footer/>
             <ToastContainer/>
         </main>
-    )
-}
+    );
+};
 
-export default MainLayout
+export default MainLayout;
